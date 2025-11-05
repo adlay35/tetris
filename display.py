@@ -1,12 +1,19 @@
 import curses
-from curses import wrapper
 
-def draw_block(stdscr):
+# 각 역할 맞게 색을 칠해주는 함수
+# 빈공간은 0,벽은1, 블럭은 각각의 색에 맞게?
+def color_block(stdscr, y, x, color_id):
+    if color_id == 0:
+        stdscr.addstr(y, 2*x, "  ")
+    else:
+        stdscr.addstr(y, 2*x, "  ", curses.color_pair(color_id))
+
+def draw_board(stdscr, board):
     stdscr.clear()
-    #color pieces
-    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
-    stdscr.addstr(1,0,"  ", curses.color_pair(1))
 
+    for i in range(22):
+        for j in range(12):
+            color_block(stdscr, i, j, board[i][j])
+    
+    stdscr.refresh()
     stdscr.getch()
-
-wrapper(draw_block)
