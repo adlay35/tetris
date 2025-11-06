@@ -29,13 +29,13 @@ def define_color():
     curses.init_pair(8, 8, 8)   # 8번에 White을 할당
 
 
-def draw_block(stdscr, y, x, block_id):
+def draw_block(window, y, x, block_id):
     """입력받은 좌표(y, x)에 해당 block_id의 색상 블럭을 출력하는 함수.
 
     터미널 글자 간격을 맞추기 위해 x좌표는 내부적으로 2배 처리됨.
 
     Args:
-        stdscr (object): 출력에 사용할 curses의 윈도우 객체
+        window (object): 출력에 사용할 curses의 윈도우 객체
         y (int): 출력할 지점의 y좌표 (행)
         x (int): 출력할 지점의 x좌표 (열, 내부적으로 2*x로 변환됨)
         block_id (int): 출력할 지점의 색상 id (0: 빈공간, 1~8: 정의된 색상)
@@ -43,17 +43,17 @@ def draw_block(stdscr, y, x, block_id):
     actual_x = 2 * x    # 터미널 글자 간격 조정 
 
     if block_id == 0:
-        stdscr.addstr(y, actual_x, "  ")
+        window.addstr(y, actual_x, "  ")
     else:
-        stdscr.addstr(y, actual_x, "  ", curses.color_pair(block_id))
+        window.addstr(y, actual_x, "  ", curses.color_pair(block_id))
 
 
-def draw_board(stdscr, board):
-    stdscr.clear()
+def draw_board(window, board):
+    window.clear()
 
     for i in range(22):
         for j in range(12):
-            draw_block(stdscr, i, j, board[i][j])
+            draw_block(window, i, j, board[i][j])
     
-    stdscr.refresh()
-    stdscr.getch()
+    window.refresh()
+    window.getch()
