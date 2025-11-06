@@ -30,9 +30,9 @@ def define_color():
 
 
 def color_block(stdscr, y, x, block_id):
-    """입력받은 좌표의 블럭 색을 출력해주는 함수.
+    """입력받은 좌표(y, x)에 해당 block_id의 색상 블럭을 출력하는 함수.
 
-    터미널 글자 간격 때문에 가로칸은 2칸이 1칸이 되어야 정사각형이 됨
+    터미널 글자 간격을 맞추기 위해 x좌표는 내부적으로 2배 처리됨.
 
     Args:
         stdscr (object): 출력에 사용할 curses의 윈도우 객체
@@ -40,10 +40,12 @@ def color_block(stdscr, y, x, block_id):
         x (int): 출력할 지점의 x좌표 (열, 내부적으로 2*x로 변환됨)
         block_id (int): 출력할 지점의 색상 id (0: 빈공간, 1~8: 정의된 색상)
     """
+    actual_x = 2 * x    # 터미널 글자 간격 조정 
+
     if block_id == 0:
-        stdscr.addstr(y, 2*x, "  ")
+        stdscr.addstr(y, actual_x, "  ")
     else:
-        stdscr.addstr(y, 2*x, "  ", curses.color_pair(block_id))
+        stdscr.addstr(y, actual_x, "  ", curses.color_pair(block_id))
 
 
 def draw_board(stdscr, board):
