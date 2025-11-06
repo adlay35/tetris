@@ -29,7 +29,7 @@ def define_color():
     curses.init_pair(8, 8, 8)   # 8번에 White을 할당
 
 
-def color_block(stdscr, y, x, block_id):
+def draw_block(stdscr, y, x, block_id):
     """입력받은 좌표(y, x)에 해당 block_id의 색상 블럭을 출력하는 함수.
 
     터미널 글자 간격을 맞추기 위해 x좌표는 내부적으로 2배 처리됨.
@@ -53,7 +53,7 @@ def draw_board(stdscr, board):
 
     for i in range(22):
         for j in range(12):
-            color_block(stdscr, i, j, board[i][j])
+            draw_block(stdscr, i, j, board[i][j])
     
     stdscr.refresh()
     stdscr.getch()
