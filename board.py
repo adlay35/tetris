@@ -6,11 +6,15 @@ def reset_board():
     Returns:
         list: 초기화된 게임 보드 값이 담긴 2차원 리스트
     """
-    board = []
+    WALL_CHELL = 8
+    BOARD_WIDTH = 10
+    BOARD_HEIGHT = 20
+    TOTAL_COLS = BOARD_WIDTH + 2
+    TOTAL_ROWS = BOARD_HEIGHT + 2
 
-    board.append([8 for x in range(22)])    #시작부분 벽 라인
-    for i in range(20):
-        board.append([8,0,0,0,0,0,0,0,0,0,0,8]) #중간 20 라인
-    board.append([8 for x in range(22)])    #끝부분 벽 라인
+    top_wall = [WALL_CHELL] * TOTAL_COLS
+    middle_wall = [WALL_CHELL] + ([0] * BOARD_WIDTH) + [WALL_CHELL]
+
+    board = [top_wall] + ([middle_wall] * BOARD_HEIGHT) + [top_wall]
 
     return board
