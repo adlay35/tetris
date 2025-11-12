@@ -46,7 +46,6 @@ def render_cell(window, y, x, block_id):
     else:
         window.addstr(y, actual_x, "  ", curses.color_pair(block_id))
 
-# TODO: 보드 그리는 함수(전체 그리기)랑 벽 그리는 함수로 구분하기
 def draw_board(window, board):
     """게임의 보드판을 그리는 함수
     """
