@@ -89,8 +89,8 @@ def spawn_tetromino(tetromino_table = None):
     new_piece = {
         'block_id': n,
         'tetromino_data': tetromino_data,
-        'x': initial_x,
-        'y': initial_y
+        'current_x': initial_x,
+        'current_y': initial_y
     }
 
     return new_piece, tetromino_table

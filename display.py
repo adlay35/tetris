@@ -58,4 +58,25 @@ def draw_board(window, board):
             draw_block(window, i, j, board[i][j])
     
     window.refresh()
-    window.getch()
+
+
+def draw_block(window, piece_dict):
+    """입력받은 블럭 데이터를 기반으로 블럭을 그리는 함수
+
+    Args:
+        window (object): 출력에 사용할 curses의 윈도우 객체
+        piece_dict: (dict): 입력받은 블럭의 정보가 담긴 딕셔너리
+    """
+    block_id = piece_dict['block_id']
+    tetromino_data = piece_dict['tetromino_data']
+    current_x = piece_dict['current_x']
+    current_y = piece_dict['current_y']
+
+    window.clear()
+
+    for i in range(len(tetromino_data)):
+        for j in range(tetromino_data[i]):
+            if (j > 0):
+                draw_block(window, i, j, tetromino_data[i][j])  #이거 마지막 파라미터를 block_id로 수정?
+    
+    window.refresh()
