@@ -49,6 +49,8 @@ def draw_block(window, y, x, block_id):
 
 
 def draw_board(window, board):
+    """게임의 보드판을 그리는 함수
+    """
     window.clear()
 
     for i in range(22):
