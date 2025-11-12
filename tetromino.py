@@ -83,8 +83,8 @@ def spawn_tetromino(tetromino_table = None):
     key_name = TETROMINO_KEY_NAME[n]
     tetromino_data = tertomino[key_name]
 
-    initial_x = 4 * 2    # 보드의 가로축 중앙에서 시작
-    initial_y = 1        # 제일 위에서 시작
+    initial_x = 3   # 보드의 가로축 중앙에서 시작
+    initial_y = 0   # 제일 위에서 시작
 
     new_piece = {
         'block_id': n,

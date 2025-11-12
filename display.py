@@ -59,7 +59,7 @@ def draw_board(window, board):
     
     window.refresh()
 
-
+# TODO: 가독성 향상
 def draw_piece(window, piece_dict):
     """입력받은 블럭 데이터를 기반으로 블럭을 그리는 함수
 
@@ -75,8 +75,8 @@ def draw_piece(window, piece_dict):
     window.clear()
 
     for i in range(len(tetromino_data)):
-        for j in range(tetromino_data[i]):
-            if (j > 0):
-                draw_block(window, i, j, tetromino_data[i][j])  #이거 마지막 파라미터를 block_id로 수정?
+        for j in range(len(tetromino_data[i])):
+            if (tetromino_data[i][j] > 0):
+                draw_block(window, i + current_y, j + current_x, tetromino_data[i][j])  #이거 마지막 파라미터를 block_id로 수정?
     
     window.refresh()
