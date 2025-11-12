@@ -28,8 +28,7 @@ def define_color():
     curses.init_pair(7, 7, 7)   # .
     curses.init_pair(8, 8, 8)   # 8번에 White을 할당
 
-# TODO: 함수 이름 변경하기!
-def draw_block(window, y, x, block_id):
+def render_cell(window, y, x, block_id):
     """입력받은 좌표(y, x)에 해당 block_id의 색상 블럭을 출력하는 함수.
 
     터미널 글자 간격을 맞추기 위해 x좌표는 내부적으로 2배 처리됨.
@@ -55,7 +54,7 @@ def draw_board(window, board):
 
     for i in range(22):
         for j in range(12):
-            draw_block(window, i, j, board[i][j])
+            render_cell(window, i, j, board[i][j])
     
     window.refresh()
 
@@ -77,6 +76,6 @@ def draw_piece(window, piece_dict):
     for i in range(len(tetromino_data)):
         for j in range(len(tetromino_data[i])):
             if (tetromino_data[i][j] > 0):
-                draw_block(window, i + current_y, j + current_x, tetromino_data[i][j])  #이거 마지막 파라미터를 block_id로 수정?
+                render_cell(window, i + current_y, j + current_x, tetromino_data[i][j])  #이거 마지막 파라미터를 block_id로 수정?
     
     window.refresh()
