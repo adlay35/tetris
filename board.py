@@ -18,5 +18,3 @@ def reset_board():
     board = [top_wall] + ([middle_wall] * BOARD_HEIGHT) + [top_wall]
 
     return board
-
-print(reset_board())

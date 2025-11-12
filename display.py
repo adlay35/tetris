@@ -28,7 +28,7 @@ def define_color():
     curses.init_pair(7, 7, 7)   # .
     curses.init_pair(8, 8, 8)   # 8번에 White을 할당
 
-
+# TODO: 함수 이름 변경하기!
 def draw_block(window, y, x, block_id):
     """입력받은 좌표(y, x)에 해당 block_id의 색상 블럭을 출력하는 함수.
 
@@ -47,7 +47,7 @@ def draw_block(window, y, x, block_id):
     else:
         window.addstr(y, actual_x, "  ", curses.color_pair(block_id))
 
-
+# TODO: 보드 그리는 함수(전체 그리기)랑 벽 그리는 함수로 구분하기
 def draw_board(window, board):
     """게임의 보드판을 그리는 함수
     """
@@ -60,7 +60,7 @@ def draw_board(window, board):
     window.refresh()
 
 
-def draw_block(window, piece_dict):
+def draw_piece(window, piece_dict):
     """입력받은 블럭 데이터를 기반으로 블럭을 그리는 함수
 
     Args:

@@ -4,10 +4,16 @@ from curses import wrapper
 import board
 import display
 
-board = board.reset_board()
-display.define_color()
-
 def main(stdscr):
-    display.draw_board(stdscr, board)
+    border_window = curses.newwin(22, 24, 0, 0)
+    active_piece_window = curses.newwin(20, 20, 1, 2)
+    playing_field_window = curses.newwin(20, 20, 1, 2)
+    
+    display.define_color()
+    board_data = board.reset_board()
+
+    display.draw_board(border_window, board_data)
+
+    stdscr.getch()
 
 wrapper(main)
